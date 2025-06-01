@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>File Explorer with PDF Viewer</title>
+    <style>
+      body, html { margin: 0; padding: 0; height: 100%; font-family: Arial, sans-serif; }
+      #navbar {
+        height: 60px;
+        background: #2c3e50;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      #navbar button {
+        background: #3498db;
+        color: #fff;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background 0.3s;
+      }
+      #navbar button:hover {
+        background: #2980b9;
+      }
+      #current-file {
+        margin-left: 20px;
+        font-size: 14px;
+        color: #ccc;
+      }
+      #container {
+        display: flex;
+        height: calc(100vh - 60px);
+      }
+      #sidebar {
+        width: 250px;
+        background: #f5f5f5;
+        border-right: 1px solid #e0e0e0;
+        padding: 15px;
+        overflow-y: auto;
+        max-height: calc(100vh - 60px);
+      }
+      #sidebar h3 {
+        margin: 0 0 15px 0;
+        color: #424242;
+        font-size: 16px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #e0e0e0;
+      }
+      #sidebar div {
+        padding: 8px 12px;
+        margin: 4px 0;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+      #sidebar div:hover {
+        background: #eeeeee;
+      }
+      #sidebar div.selected {
+        background: #e0e0e0;
+        border-left: 3px solid #757575;
+      }
+      #sidebar div.selected .file-name {
+        color: #424242;
+        font-weight: 500;
+      }
+      .file-name {
+        flex: 1;
+        margin-right: 8px;
+        color: #616161;
+        transition: color 0.3s ease;
+      }
+      .edit-button {
+        background: none;
+        border: none;
+        color: #757575;
+        cursor: pointer;
+        padding: 4px 8px;
+        font-size: 14px;
+        opacity: 0;
+        transition: all 0.3s ease;
+        border-radius: 4px;
+      }
+      #sidebar div:hover .edit-button {
+        opacity: 1;
+      }
+      .edit-button:hover {
+        background: #e0e0e0;
+        color: #424242;
+      }
+      .file-name-input {
+        flex: 1;
+        padding: 4px 8px;
+        border: 1px solid #bdbdbd;
+        border-radius: 4px;
+        margin-right: 8px;
+        font-size: 14px;
+        outline: none;
+      }
+      .file-name-input:focus {
+        border-color: #757575;
+        box-shadow: 0 0 0 2px rgba(117, 117, 117, 0.2);
+      }
+      #main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        position: relative;
+      }
+      #pdf-viewer {
+        width: 90%;
+        height: 90%;
+        border: 1px solid #ddd;
+        background: #f8f9fa;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      #rename-button {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #3498db;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        transition: background 0.3s;
+      }
+      #rename-button:hover {
+        background: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <button id="import-button">Import Birth Certificate</button>
+      <div id="current-file">No file selected</div>
+      <!-- Add navbar buttons here -->
+    </div>
+    <div id="container">
+      <div id="sidebar">
+        <h3>Folders</h3>
+        <!-- Folder/file list will go here -->
+      </div>
+      <div id="main">
+        <div id="pdf-viewer">
+          <!-- PDF.js viewer will go here -->
+          <p>Select a PDF to view</p>
+        </div>
+        <button id="rename-button">✏️</button>
+      </div>
+    </div>
+    <script src="renderer.js"></script>
+    <script>
+      // Ensure the context menu is removed when clicking outside
+      document.addEventListener('click', (e) => {
+        const contextMenu = document.querySelector('div[style*="position: absolute"]');
+        if (contextMenu && !contextMenu.contains(e.target)) {
+          document.body.removeChild(contextMenu);
+        }
+      });
+    </script>
+  </body>
+</html> 
