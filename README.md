@@ -1,6 +1,6 @@
 ﻿# PDF Renaming System
 
-A modern web application for managing and renaming PDF files with a user-friendly interface. Built Electron JS, this application allows users to import, view, rename, and manage PDF files efficiently.
+A modern web application for managing and renaming PDF files with a user-friendly interface. Built with Electron JS, this application allows users to import, view, rename, and manage PDF files efficiently.
 
 ## Features
 
