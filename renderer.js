@@ -45,10 +45,10 @@ async function analyzePDF(filePath) {
     // Create the prompt for Gemini
     const prompt = `Analyze this pdf file and extract the following information:
 
-1. Registry Number: Look for the number that appears on the right side of "Registry Number" or "Registry No." The number should be in the format XX-XXXX.
+1. Unique Identifier: Look for the number that appears on the right side of "Unique Identifier" or "Identifier No." The number should be in the format XX-XXXX.
 
 Please provide the information in this exact format:
-Registry Number: [XX-XXXX]`;
+Identifier Number: [XX-XXXX]`;
 
     // Get response from Gemini
     const result = await model.generateContent([
