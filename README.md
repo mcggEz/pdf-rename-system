@@ -1,6 +1,6 @@
 ﻿# PDF Renaming System
 
-This desktop application was developed as a freelance project to automate the renaming of PDF files with a gui. Built using **Electron JS**, it enable the user to efficiently import, view, rename, and manage PDF files — streamlining tedious file handling tasks.
+This desktop application was developed as a freelance project to automate the renaming of PDF files. Built using **Electron JS**, it enable the user to efficiently import, view, rename, and manage PDF files — streamlining tedious file handling tasks.
 
 ## Features
 
