@@ -1,5 +1,5 @@
 {
-  "name": "my-electron-app",
+  "name": "pdf-rename-system",
   "version": "1.0.0",
   "description": "A simple Electron application",
   "main": "main.js",
