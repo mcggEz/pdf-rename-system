@@ -43,15 +43,12 @@ async function analyzePDF(filePath) {
     const base64Data = pdfData.toString('base64');
     
     // Create the prompt for Gemini
-    const prompt = `Analyze this birth certificate and extract the following information:
+    const prompt = `Analyze this pdf file and extract the following information:
 
-1. Local Registry Number: Look for the number that appears on the right side of "Local Registry Number" or "Local Registry No." The number should be in the format XX-XXXX.
-
-2. Full Name: Extract the complete name of the person. Format the name in sentence case (only first letter of each word capitalized).
+1. Registry Number: Look for the number that appears on the right side of "Registry Number" or "Registry No." The number should be in the format XX-XXXX.
 
 Please provide the information in this exact format:
-Registry Number: [XX-XXXX]
-Name: [Last Name], [First Name] [Middle Name]`;
+Registry Number: [XX-XXXX]`;
 
     // Get response from Gemini
     const result = await model.generateContent([
